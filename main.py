@@ -1,6 +1,7 @@
 import telebot
 import requests
 import time
+import os
 from flask import Flask
 from threading import Thread
 
@@ -21,8 +22,8 @@ def keep_alive():
 
 keep_alive()
 
-# Telegram bot kodi
-TOKEN = '8340529789:AAEr3H11UtmIRbQpqt40ZvwdpC1cMRQTKs'
+# Telegram bot kodi (Token Render xavfsiz muhitidan olinadi)
+TOKEN = os.getenv('BOT_TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
