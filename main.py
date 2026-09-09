@@ -1,7 +1,27 @@
 import telebot
 import requests
 import time
+from flask import Flask
+from threading import Thread
 
+# Render tekin serveri o'chib qolmasligi uchun mini veb-server
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot faol ishlayapti!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.daemon = True
+    t.start()
+
+keep_alive()
+
+# Telegram bot kodi
 TOKEN = '8340529789:AAFutYS4NvkcGe-02aDTwI3Ccc24I0jar8o'
 bot = telebot.TeleBot(TOKEN)
 
